@@ -1,0 +1,259 @@
+{
+ "_note": "Set 'file' (path from the site root), 'w', 'h', 'alt' to replace a tile with a real photo, then run python/build.py. Never present stock photos as NexaCare staff, patients or premises.",
+ "slots": {
+  "duo": {
+   "file": "assets/images/hero/care-team-hero.jpg",
+   "w": 960,
+   "h": 1120,
+   "alt": "A doctor and a nurse standing together in a hospital ward",
+   "status": "supplied by client",
+   "source": "Client-supplied photograph; confirm licence and permission to publish",
+   "credit": "NexaCare",
+   "license": "Client-owned (to confirm)"
+  },
+  "doctor-corridor": {
+   "file": "assets/images/doctors/doctor-corridor.jpg",
+   "w": 800,
+   "h": 1005,
+   "alt": "A doctor in a white coat holding a clipboard in a hospital corridor",
+   "status": "supplied by client",
+   "source": "Client-supplied photograph; confirm licence and permission to publish",
+   "credit": "NexaCare",
+   "license": "Client-owned (to confirm)"
+  },
+  "doctor-clipboard": {
+   "file": "assets/images/doctors/doctor-clipboard.jpg",
+   "w": 800,
+   "h": 1011,
+   "alt": "A doctor in a white coat writing notes on a clipboard",
+   "status": "supplied by client",
+   "source": "Client-supplied photograph; confirm licence and permission to publish",
+   "credit": "NexaCare",
+   "license": "Client-owned (to confirm)"
+  },
+  "doctor-studio": {
+   "file": "assets/images/doctors/doctor-studio.jpg",
+   "w": 800,
+   "h": 1067,
+   "alt": "A doctor in a white coat with a stethoscope",
+   "status": "supplied by client",
+   "source": "Client-supplied photograph; confirm licence and permission to publish",
+   "credit": "NexaCare",
+   "license": "Client-owned (to confirm)"
+  },
+  "hero-banner (CSS background)": {
+   "file": "assets/images/hero/hero-banner.jpg",
+   "w": 1920,
+   "h": 520,
+   "alt": "Composite made from the corridor photograph",
+   "status": "supplied by client",
+   "source": "Client-supplied photograph; confirm licence and permission to publish",
+   "credit": "NexaCare",
+   "license": "Client-owned (to confirm)"
+  },
+  "service-outpatient": {
+   "file": "assets/images/services/blood-pressure-check.jpg",
+   "icon": "fa-stethoscope",
+   "status": "supplied by site owner",
+   "source": "Supplied by the site owner; licence and permission to publish to be confirmed",
+   "credit": "TBC",
+   "license": "TBC",
+   "w": 576,
+   "h": 432,
+   "alt": "A nurse checking an older man's blood pressure in a clinic room"
+  },
+  "service-maternal-child-health": {
+   "file": "assets/images/services/nurse-child-checkup.jpg",
+   "icon": "fa-baby",
+   "status": "supplied by site owner",
+   "source": "Supplied by the site owner; licence and permission to publish to be confirmed",
+   "credit": "TBC",
+   "license": "TBC",
+   "w": 738,
+   "h": 414,
+   "alt": "A smiling nurse listening to a young child's chest with a stethoscope"
+  },
+  "service-laboratory": {
+   "file": null,
+   "icon": "fa-vial",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "service-pharmacy": {
+   "file": null,
+   "icon": "fa-pills",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "service-family-planning": {
+   "file": null,
+   "icon": "fa-people-roof",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "service-emergency-care": {
+   "file": null,
+   "icon": "fa-truck-medical",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "service-minor-procedures": {
+   "file": null,
+   "icon": "fa-bandage",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "service-counselling": {
+   "file": null,
+   "icon": "fa-hand-holding-heart",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "service-physiotherapy": {
+   "file": null,
+   "icon": "fa-person-walking",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "service-homecare": {
+   "file": null,
+   "icon": "fa-house-medical",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "service-telemedicine": {
+   "file": null,
+   "icon": "fa-laptop-medical",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "topic-hypertension": {
+   "file": "assets/images/services/blood-pressure-check.jpg",
+   "icon": "fa-heart-pulse",
+   "status": "supplied by site owner",
+   "source": "Supplied by the site owner; licence and permission to publish to be confirmed",
+   "credit": "TBC",
+   "license": "TBC",
+   "w": 576,
+   "h": 432,
+   "alt": "A nurse checking an older man's blood pressure in a clinic room"
+  },
+  "topic-diabetes": {
+   "file": null,
+   "icon": "fa-droplet",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "topic-malaria": {
+   "file": null,
+   "icon": "fa-mosquito",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "topic-healthy-ageing": {
+   "file": null,
+   "icon": "fa-person-cane",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "topic-fall-prevention": {
+   "file": null,
+   "icon": "fa-shoe-prints",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "topic-maternal-health": {
+   "file": null,
+   "icon": "fa-person-pregnant",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "topic-child-health": {
+   "file": "assets/images/services/nurse-child-checkup.jpg",
+   "icon": "fa-child-reaching",
+   "status": "supplied by site owner",
+   "source": "Supplied by the site owner; licence and permission to publish to be confirmed",
+   "credit": "TBC",
+   "license": "TBC",
+   "w": 738,
+   "h": 414,
+   "alt": "A smiling nurse listening to a young child's chest with a stethoscope"
+  },
+  "topic-medication-safety": {
+   "file": null,
+   "icon": "fa-capsules",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "topic-respiratory-health": {
+   "file": null,
+   "icon": "fa-lungs",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "homecare": {
+   "file": null,
+   "icon": "fa-house-medical",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "homecare-hero": {
+   "file": null,
+   "status": "awaiting photo",
+   "source": "",
+   "credit": "",
+   "license": "",
+   "icon": "fa-house-medical"
+  },
+  "homecare-visit": {
+   "file": null,
+   "status": "awaiting photo",
+   "source": "",
+   "credit": "",
+   "license": "",
+   "icon": "fa-house-medical"
+  },
+  "homecare-family": {
+   "file": null,
+   "status": "awaiting photo",
+   "source": "",
+   "credit": "",
+   "license": "",
+   "icon": "fa-house-medical"
+  }
+ }
+}

@@ -1,0 +1,12 @@
+:root{
+  /* NexaCare palette: navy for structure, blue as the dominant accent, green for selected actions. */
+  --navy:#0B405B; --blue:#0799D1; --blue-btn:#0679A3; --blue-band:#05779F; --green:#08A653; --green-dark:#067F40;
+  --white:#fff; --bg:#F7F9FB; --charcoal:#202020; --charcoal-deep:#161616;
+  --text:#4A5563; --muted:#6B7685; --border:#E3E8EE; --heading:#1D2B36;
+  --alert:#B42318; --alert-tint:#FEF3F2; --blue-tint:#EAF6FB; --green-tint:#EAF7F0;
+  --font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --font-body:"Hind","Open Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --container:1140px; --radius:4px; --shadow:0 2px 14px rgba(11,64,91,.08);
+  --warm:#FBF6EE; --space-1:.5rem; --space-2:1rem; --space-3:1.5rem; --space-4:2.5rem; --shadow-header:0 4px 18px rgba(11,64,91,.12);
+  --section:clamp(3rem,6vw,5rem);
+}

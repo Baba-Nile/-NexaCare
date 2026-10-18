@@ -1,0 +1,69 @@
+.container{width:min(100% - 2rem,var(--container));margin-inline:auto}
+.section{padding-block:var(--section)}
+.section--alt{background:var(--bg)}
+.section-title{margin-bottom:2rem}
+.section-title h2{margin:0 0 .9rem;position:relative;padding-bottom:.9rem}
+.section-title h2::after{content:"";position:absolute;left:0;bottom:0;width:38px;height:2px;background:var(--blue)}
+.section-title--center{text-align:center}
+.section-title--center h2::after{left:50%;transform:translateX(-50%)}
+.section-title p{max-width:44rem;margin:0}
+.section-title--center p{margin-inline:auto}
+.grid{display:grid;gap:1.5rem;grid-template-columns:1fr}
+.split{display:grid;gap:2rem;align-items:start}
+.layout-aside{display:grid;gap:2.5rem}
+/* top bar */
+.topbar{background:#F2F5F8;border-bottom:1px solid var(--border);font-size:.82rem;color:var(--muted)}
+.topbar .container{display:flex;justify-content:space-between;gap:1rem;padding-block:.45rem;flex-wrap:wrap}
+.topbar a{color:inherit;text-decoration:none}.topbar a:hover{color:var(--navy)}
+.topbar i{color:var(--blue);margin-right:.4rem}
+.topbar .hide-sm{display:none}
+/* header */
+.site-header{background:#fff;position:sticky;top:0;z-index:100}
+.headmain{border-bottom:1px solid var(--border)}
+.headmain__in{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:72px}
+.brand img{height:68px;width:auto}
+.infoblocks{display:none;list-style:none}
+.infoblock{display:flex;align-items:center;gap:.8rem}
+.infoblock i{font-size:1.5rem;color:var(--blue);width:1.8rem;text-align:center}
+.infoblock strong{display:block;color:var(--blue-btn);font-size:.95rem;font-weight:600;line-height:1.3}
+.infoblock span{font-size:.88rem;color:var(--muted);line-height:1.3;display:block}
+.infoblock a{text-decoration:none;color:var(--muted)}
+.nav-toggle{width:46px;height:46px;border:1px solid var(--border);background:#fff;color:var(--navy);font-size:1.2rem;cursor:pointer;border-radius:var(--radius)}
+.navbar{display:none;background:#fff;border-bottom:1px solid var(--border);max-height:calc(100vh - 120px);overflow:auto}
+.navbar.is-open{display:block}
+.navbar__in{padding-block:.75rem}
+.nav__list{list-style:none;display:grid}
+.nav__list>li>a,.sub-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:46px;padding:.4rem .5rem;font:600 .8rem var(--font);white-space:nowrap;text-transform:uppercase;letter-spacing:.02em;color:var(--heading);text-decoration:none;background:none;border:0;cursor:pointer;text-align:left}
+.nav__list>li>a:hover,.sub-toggle:hover{color:var(--blue-btn)}
+.nav__list a[aria-current=page]{color:var(--blue-btn)}
+.sub-toggle i{font-size:.65rem;margin-left:.4rem}
+.sub{list-style:none;display:none;padding:0 0 .5rem 1rem}
+.has-sub.is-open>.sub{display:block}
+.sub a{display:block;padding:.5rem;color:var(--text);text-decoration:none;font-size:.93rem}
+.sub a:hover{color:var(--blue-btn)}
+.navbar__cta{display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;margin-top:.75rem;background:var(--blue-btn);color:#fff;font:700 .86rem var(--font);text-transform:uppercase;text-decoration:none;border-radius:var(--radius)}
+.navbar__cta:hover{background:var(--navy);color:#fff}
+/* footer */
+.site-footer{background:var(--charcoal);color:#B9BEC4;font-size:.94rem}
+.footer__grid{display:grid;gap:2.25rem;padding-block:clamp(2.5rem,5vw,4rem)}
+.site-footer h2{color:#fff;font-size:1.15rem;font-weight:400;margin-bottom:1.1rem;padding-bottom:.8rem;position:relative}
+.site-footer h2::after{content:"";position:absolute;left:0;bottom:0;width:30px;height:2px;background:var(--blue)}
+.site-footer ul{list-style:none}
+.site-footer li+li{margin-top:.5rem}
+.site-footer a{color:#B9BEC4;text-decoration:none}
+.site-footer a:hover{color:#fff;text-decoration:underline}
+.footer__more{color:#5CC6EC!important;font-weight:600;font-size:.85rem;text-transform:uppercase}
+.footer__cols{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1.25rem}
+.footer__cols li{margin:0!important}
+.footer__contact li{display:flex;gap:.8rem;align-items:flex-start;padding-block:.35rem}
+.footer__contact i{color:var(--blue);margin-top:.3rem;width:1.1rem;text-align:center}
+.footer__bar{background:var(--charcoal-deep);font-size:.84rem;padding:1.1rem 0}
+.footer__bar .container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 1.5rem}
+.footer__bar p{margin:0}
+.footer__legal{display:flex;gap:1.25rem;flex-wrap:wrap}
+.footer__note{font-size:.82rem;color:#8E959D;margin-top:1rem}
+/* sticky header: one rule, never overridden. Shadow appears once the page is scrolled (see navigation.js). */
+.site-header{transition:box-shadow .25s ease}
+.site-header.is-scrolled{box-shadow:var(--shadow-header)}
+.navbar .nav__list>li>a[aria-current=page],.navbar .has-sub>.sub-toggle[aria-expanded=true]{box-shadow:inset 0 2px 0 var(--blue)}
+.footer__contact li{border-bottom:1px solid #333;padding-block:.7rem}.footer__contact li:last-child{border-bottom:0}

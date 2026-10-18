@@ -1,0 +1,12 @@
+[
+ {
+  "slug": "clinician-1",
+  "pending": true,
+  "name": null,
+  "title": null,
+  "department": null,
+  "photo": "assets/images/doctors/doctor-corridor.jpg",
+  "photo_alt": "A doctor in a white coat holding a clipboard in a hospital corridor",
+  "published": false
+ }
+]

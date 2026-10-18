@@ -1,0 +1,20 @@
+{
+  "_note": "Central place for client-confirmable facts. Items under 'to_confirm' are placeholders; edit here and re-run python/build.py.",
+  "name": "NexaCare Health Centre",
+  "short": "NexaCare",
+  "tagline": "Modern Medicine, Compassionate Touch",
+  "phone": "+254 726 094 695",
+  "phone_tel": "+254726094695",
+  "email": "nexacarehc@gmail.com",
+  "hours": "8:00am to 10:00pm daily",
+  "locality": "Gatua, Kitale",
+  "address_full": null,
+  "map_embed": null,
+  "domain": null,
+  "emergency_line": null,
+  "whatsapp": null,
+  "social": {},
+  "build_date": "16 October 2026",
+  "logo": {"header": [420, 333], "full": [720, 457], "mark": [320, 280]},
+  "to_confirm": ["Opening hours (poster says 8:00am-10:00pm daily; banner says 24/7)", "Full street address and map location", "Emergency line, hours and ambulance availability", "WhatsApp number", "Domain name", "Social media links", "Which tests, procedures, contraception methods and homecare types are offered", "Pricing and payment options", "Staff names, qualifications and portraits", "Mission, vision and values wording"]
+}
