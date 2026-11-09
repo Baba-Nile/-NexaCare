@@ -1,0 +1,100 @@
+{
+  "_note": "Single source of truth for NexaCare branches. Edit here, then run: python python/build.py. A detail is shown publicly ONLY when it has a value AND its flag under 'verified' is true. Leave a value null until the owner has confirmed it. Never guess addresses, numbers, hours, coordinates or services.",
+  "_how_to_complete_a_branch": [
+    "1. Fill in the value (for example phone.display and phone.tel).",
+    "2. Set the matching flag under 'verified' to true once the owner has confirmed it.",
+    "3. Set 'status' to 'open' when the branch is confirmed as operating (pages stay out of search engines until then).",
+    "4. Run python python/build.py and python python/check_site.py."
+  ],
+  "_status_values": {"details_pending": "Branch is listed; its own details have not been supplied yet (default)", "open": "Owner has confirmed the branch is operating and details are verified", "coming_soon": "Owner has confirmed the branch is opening later"},
+  "main_centre": {
+    "slug": "gatua-kitale",
+    "name": "Gatua, Kitale",
+    "label": "Main centre",
+    "role": "main_centre",
+    "_note": "Existing NexaCare location from the original website. Kept as the main centre and listed separately from the six branches. The owner should confirm this (see docs/BRANCHES.md). It uses the central telephone and email held in data/site.json.",
+    "locality": "Gatua, Kitale",
+    "address": null,
+    "uses_central_contact": true,
+    "phone": {"display": null, "tel": null},
+    "whatsapp": {"display": null, "number": null},
+    "email": null,
+    "hours": null,
+    "services": [],
+    "coordinates": {"lat": null, "lng": null},
+    "directions_url": null,
+    "status": "open",
+    "verified": {"locality": true, "address": false, "phone": false, "whatsapp": false, "email": false, "hours": false, "services": false, "directions": false},
+    "seo_title": "NexaCare Health Centre, Gatua, Kitale | Main centre",
+    "seo_description": "NexaCare Health Centre's main centre in Gatua, Kitale. Call the central line or request an appointment online.",
+    "photo_slot": "branch-gatua-kitale"
+  },
+  "branches": [
+    {
+      "slug": "maili-saba", "name": "Maili Saba", "label": "Branch", "role": "branch",
+      "locality": null, "address": null,
+      "phone": {"display": null, "tel": null}, "whatsapp": {"display": null, "number": null}, "email": null,
+      "hours": null, "services": [], "coordinates": {"lat": null, "lng": null}, "directions_url": null,
+      "status": "details_pending",
+      "verified": {"locality": false, "address": false, "phone": false, "whatsapp": false, "email": false, "hours": false, "services": false, "directions": false},
+      "seo_title": "NexaCare Maili Saba | Branch of NexaCare Health Centre",
+      "seo_description": "NexaCare Health Centre's Maili Saba branch. Find contact options and request an appointment at this branch.",
+      "photo_slot": "branch-maili-saba"
+    },
+    {
+      "slug": "manor-house", "name": "Manor House", "label": "Branch", "role": "branch",
+      "locality": null, "address": null,
+      "phone": {"display": null, "tel": null}, "whatsapp": {"display": null, "number": null}, "email": null,
+      "hours": null, "services": [], "coordinates": {"lat": null, "lng": null}, "directions_url": null,
+      "status": "details_pending",
+      "verified": {"locality": false, "address": false, "phone": false, "whatsapp": false, "email": false, "hours": false, "services": false, "directions": false},
+      "seo_title": "NexaCare Manor House | Branch of NexaCare Health Centre",
+      "seo_description": "NexaCare Health Centre's Manor House branch. Find contact options and request an appointment at this branch.",
+      "photo_slot": "branch-manor-house"
+    },
+    {
+      "slug": "meru-farm", "name": "Meru Farm", "label": "Branch", "role": "branch",
+      "locality": null, "address": null,
+      "phone": {"display": null, "tel": null}, "whatsapp": {"display": null, "number": null}, "email": null,
+      "hours": null, "services": [], "coordinates": {"lat": null, "lng": null}, "directions_url": null,
+      "status": "details_pending",
+      "verified": {"locality": false, "address": false, "phone": false, "whatsapp": false, "email": false, "hours": false, "services": false, "directions": false},
+      "seo_title": "NexaCare Meru Farm | Branch of NexaCare Health Centre",
+      "seo_description": "NexaCare Health Centre's Meru Farm branch. Find contact options and request an appointment at this branch.",
+      "photo_slot": "branch-meru-farm"
+    },
+    {
+      "slug": "tiwani", "name": "Tiwani", "label": "Branch", "role": "branch",
+      "locality": null, "address": null,
+      "phone": {"display": null, "tel": null}, "whatsapp": {"display": null, "number": null}, "email": null,
+      "hours": null, "services": [], "coordinates": {"lat": null, "lng": null}, "directions_url": null,
+      "status": "details_pending",
+      "verified": {"locality": false, "address": false, "phone": false, "whatsapp": false, "email": false, "hours": false, "services": false, "directions": false},
+      "seo_title": "NexaCare Tiwani | Branch of NexaCare Health Centre",
+      "seo_description": "NexaCare Health Centre's Tiwani branch. Find contact options and request an appointment at this branch.",
+      "photo_slot": "branch-tiwani"
+    },
+    {
+      "slug": "eldoret", "name": "Eldoret", "label": "Branch", "role": "branch",
+      "locality": null, "address": null,
+      "phone": {"display": null, "tel": null}, "whatsapp": {"display": null, "number": null}, "email": null,
+      "hours": null, "services": [], "coordinates": {"lat": null, "lng": null}, "directions_url": null,
+      "status": "details_pending",
+      "verified": {"locality": false, "address": false, "phone": false, "whatsapp": false, "email": false, "hours": false, "services": false, "directions": false},
+      "seo_title": "NexaCare Eldoret | Branch of NexaCare Health Centre",
+      "seo_description": "NexaCare Health Centre's Eldoret branch. Find contact options and request an appointment at this branch.",
+      "photo_slot": "branch-eldoret"
+    },
+    {
+      "slug": "nairobi", "name": "Nairobi", "label": "Branch", "role": "branch",
+      "locality": null, "address": null,
+      "phone": {"display": null, "tel": null}, "whatsapp": {"display": null, "number": null}, "email": null,
+      "hours": null, "services": [], "coordinates": {"lat": null, "lng": null}, "directions_url": null,
+      "status": "details_pending",
+      "verified": {"locality": false, "address": false, "phone": false, "whatsapp": false, "email": false, "hours": false, "services": false, "directions": false},
+      "seo_title": "NexaCare Nairobi | Branch of NexaCare Health Centre",
+      "seo_description": "NexaCare Health Centre's Nairobi branch. Find contact options and request an appointment at this branch.",
+      "photo_slot": "branch-nairobi"
+    }
+  ]
+}

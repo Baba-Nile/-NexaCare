@@ -1,0 +1,8 @@
+{% extends 'base.html' %}{% block title %}Dashboard{% endblock %}{% block body %}<h1>Dashboard</h1><div class="tiles">
+{% if counts.patients is defined %}<a class="tile-link" href="/staff/patients"><b>{{ counts.patients }}</b> patients</a>{% endif %}
+{% if counts.appointments is defined %}<a class="tile-link" href="/staff/appointments"><b>{{ counts.appointments }}</b> appointment requests</a>{% endif %}
+{% if counts.registrations is defined %}<a class="tile-link" href="/staff/portal-accounts"><b>{{ counts.registrations }}</b> portal registrations to review</a>{% endif %}
+{% if counts.visits is defined %}<a class="tile-link" href="/staff/homecare"><b>{{ counts.visits }}</b> visits to assign or confirm</a>{% endif %}
+{% if counts.mine is defined %}<a class="tile-link" href="/staff/my-visits"><b>{{ counts.mine }}</b> of my visits</a>{% endif %}
+{% if counts.unpaid is defined %}<a class="tile-link" href="/staff/billing"><b>{{ counts.unpaid }}</b> open invoices</a>{% endif %}</div>
+<p>Signed in as {{ staff.full_name }}, {{ ROLE_LABELS[staff.role] }}. Your role decides what you can open; everything you open is logged.</p>{% endblock %}

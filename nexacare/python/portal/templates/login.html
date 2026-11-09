@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% block title %}Log in{% endblock %}{% block body %}<h1>{{ 'Staff log in' if realm == 'staff' else 'Patient and family log in' }}</h1>
+<form method="post" class="card-form" autocomplete="on"><input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+<div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="username"></div>
+<div class="field"><label for="password">Password</label><input id="password" name="password" type="password" required autocomplete="current-password"></div>
+<button class="btn btn--primary" type="submit">Log in</button></form>
+{% if realm == 'patient' %}<p>New here? <a href="/portal/register">Register for the portal</a>. Staff accounts are created by an administrator.</p>{% endif %}{% endblock %}

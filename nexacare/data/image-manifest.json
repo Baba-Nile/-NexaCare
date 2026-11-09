@@ -254,6 +254,89 @@
    "credit": "",
    "license": "",
    "icon": "fa-house-medical"
+  },
+  "photo-nurse-child": {
+   "file": "assets/images/services/nurse-child-checkup.jpg",
+   "w": 738,
+   "h": 414,
+   "alt": "A smiling nurse listening to a young child's chest with a stethoscope",
+   "status": "supplied by site owner",
+   "source": "Supplied by the site owner; licence and permission to publish to be confirmed",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "photo-blood-pressure": {
+   "file": "assets/images/services/blood-pressure-check.jpg",
+   "w": 576,
+   "h": 432,
+   "alt": "A nurse checking an older man's blood pressure in a clinic room",
+   "status": "supplied by site owner",
+   "source": "Supplied by the site owner; licence and permission to publish to be confirmed",
+   "credit": "TBC",
+   "license": "TBC"
+  },
+  "branch-gatua-kitale": {
+   "file": null,
+   "icon": "fa-location-dot",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC",
+   "note": "Add a real photograph of this branch (exterior or reception) with permission to publish."
+  },
+  "branch-maili-saba": {
+   "file": null,
+   "icon": "fa-location-dot",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC",
+   "note": "Add a real photograph of this branch (exterior or reception) with permission to publish."
+  },
+  "branch-manor-house": {
+   "file": null,
+   "icon": "fa-location-dot",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC",
+   "note": "Add a real photograph of this branch (exterior or reception) with permission to publish."
+  },
+  "branch-meru-farm": {
+   "file": null,
+   "icon": "fa-location-dot",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC",
+   "note": "Add a real photograph of this branch (exterior or reception) with permission to publish."
+  },
+  "branch-tiwani": {
+   "file": null,
+   "icon": "fa-location-dot",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC",
+   "note": "Add a real photograph of this branch (exterior or reception) with permission to publish."
+  },
+  "branch-eldoret": {
+   "file": null,
+   "icon": "fa-location-dot",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC",
+   "note": "Add a real photograph of this branch (exterior or reception) with permission to publish."
+  },
+  "branch-nairobi": {
+   "file": null,
+   "icon": "fa-location-dot",
+   "status": "tile fallback",
+   "source": "TBC",
+   "credit": "TBC",
+   "license": "TBC",
+   "note": "Add a real photograph of this branch (exterior or reception) with permission to publish."
   }
  }
 }

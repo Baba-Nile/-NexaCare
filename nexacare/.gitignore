@@ -1,0 +1,8 @@
+python/instance/
+__pycache__/
+*.db
+*.db-wal
+*.db-shm
+.env
+.venv/
+backups/

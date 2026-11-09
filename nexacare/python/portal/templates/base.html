@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>{% block title %}NexaCare{% endblock %} | NexaCare Health Centre</title>
+<link rel="stylesheet" href="/assets/css/variables.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css"><link rel="stylesheet" href="/assets/css/portal.css"></head>
+<body class="app"><a class="skip-link" href="#main">Skip to main content</a>
+<header class="app-head"><div class="app-wrap"><a class="app-brand" href="{{ '/staff/' if request.path.startswith('/staff') else '/portal/' }}"><img src="/assets/images/logo/nexacare-mark.png" alt="" width="40" height="35"><span>NexaCare {{ 'Staff' if request.path.startswith('/staff') else 'Patient Portal' }}</span></a>
+{% if staff %}<nav aria-label="Staff"><ul>
+<li><a href="/staff/">Home</a></li>
+{% if can('patients.read') %}<li><a href="/staff/patients">Patients</a></li>{% endif %}
+{% if can('appointments.manage') or can('appointments.view') %}<li><a href="/staff/appointments">Appointments</a></li>{% endif %}
+{% if can('visits.manage') %}<li><a href="/staff/homecare">Homecare</a></li>{% endif %}
+{% if can('visits.own') %}<li><a href="/staff/my-visits">My visits</a></li>{% endif %}
+{% if can('billing.read') %}<li><a href="/staff/billing">Billing</a></li>{% endif %}
+{% if can('portal.manage') %}<li><a href="/staff/portal-accounts">Portal accounts</a></li>{% endif %}
+{% if can('enquiries.read') %}<li><a href="/staff/enquiries">Enquiries</a></li>{% endif %}
+{% if can('staff.manage') %}<li><a href="/staff/users">Staff</a></li>{% endif %}
+{% if can('audit.read') %}<li><a href="/staff/audit">Audit</a></li>{% endif %}</ul></nav>
+<form method="post" action="/staff/logout"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><span class="who">{{ staff.full_name }} ({{ ROLE_LABELS[staff.role] }})</span> <a href="/staff/password">Password</a> <button class="btn btn--outline btn--sm">Log out</button></form>
+{% elif account %}<nav aria-label="Portal"><ul><li><a href="/portal/">Home</a></li><li><a href="/portal/appointments">Appointments</a></li><li><a href="/portal/care-plan">Care plan</a></li><li><a href="/portal/visits">Visits</a></li><li><a href="/portal/invoices">Invoices</a></li></ul></nav>
+<form method="post" action="/portal/logout"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><span class="who">{{ account.full_name }}</span> <a href="/portal/password">Password</a> <button class="btn btn--outline btn--sm">Log out</button></form>{% endif %}
+</div></header>
+<main id="main" class="app-wrap">{% with msgs = get_flashed_messages(with_categories=true) %}{% for cat, m in msgs %}<p class="flash flash--{{ cat }}" role="{{ 'alert' if cat == 'error' else 'status' }}">{{ m }}</p>{% endfor %}{% endwith %}
+{% block body %}{% endblock %}</main>
+<footer class="app-foot app-wrap"><p>Private system. Access is logged. Not for emergencies: go to the nearest emergency facility or call emergency services.</p></footer></body></html>

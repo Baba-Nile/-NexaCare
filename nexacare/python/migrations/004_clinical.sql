@@ -1,0 +1,6 @@
+CREATE TABLE clinical_encounters (id {PK}, patient_id BIGINT NOT NULL REFERENCES patients(id), clinician_id BIGINT NOT NULL REFERENCES users(id), encounter_type TEXT NOT NULL, occurred_at TEXT NOT NULL, reason_enc TEXT, released_to_patient INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL);
+CREATE INDEX idx_enc_patient ON clinical_encounters(patient_id);
+CREATE TABLE clinical_notes (id {PK}, encounter_id BIGINT NOT NULL REFERENCES clinical_encounters(id), author_id BIGINT NOT NULL REFERENCES users(id), body_enc TEXT NOT NULL, created_at TEXT NOT NULL);
+CREATE TABLE observations (id {PK}, encounter_id BIGINT NOT NULL REFERENCES clinical_encounters(id), recorded_by BIGINT NOT NULL REFERENCES users(id), kind TEXT NOT NULL, value TEXT NOT NULL, unit TEXT NOT NULL, recorded_at TEXT NOT NULL);
+CREATE TABLE medication_orders (id {PK}, patient_id BIGINT NOT NULL REFERENCES patients(id), encounter_id BIGINT REFERENCES clinical_encounters(id), ordered_by BIGINT NOT NULL REFERENCES users(id), medication_name TEXT NOT NULL, instructions_enc TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'active', ordered_at TEXT NOT NULL, stopped_at TEXT);
+CREATE INDEX idx_med_patient ON medication_orders(patient_id);

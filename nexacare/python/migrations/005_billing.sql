@@ -1,0 +1,3 @@
+CREATE TABLE invoices (id {PK}, patient_id BIGINT NOT NULL REFERENCES patients(id), number TEXT NOT NULL UNIQUE, description TEXT NOT NULL, amount_minor BIGINT NOT NULL, currency TEXT NOT NULL DEFAULT 'KES', status TEXT NOT NULL DEFAULT 'issued', issued_at TEXT NOT NULL, due_date TEXT, created_by BIGINT NOT NULL REFERENCES users(id));
+CREATE INDEX idx_inv_patient ON invoices(patient_id);
+CREATE TABLE payments (id {PK}, invoice_id BIGINT NOT NULL REFERENCES invoices(id), amount_minor BIGINT NOT NULL, method TEXT NOT NULL, reference TEXT, received_at TEXT NOT NULL, recorded_by BIGINT NOT NULL REFERENCES users(id), provider TEXT);

@@ -1,1 +1,4 @@
 Flask>=3.0
+cryptography>=42
+# Production PostgreSQL driver (not needed for local SQLite development):
+psycopg[binary]>=3.1

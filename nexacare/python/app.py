@@ -1,7 +1,7 @@
 """NexaCare enquiry service. Serves the static site for local development and stores enquiry forms in SQLite.
 
 Run locally:   pip install -r python/requirements.txt && python python/app.py
-Maintenance:   python python/app.py list [N] | python python/app.py purge DAYS
+Maintenance:   python python/app.py list [N] [branch-slug|unspecified] | python python/app.py purge DAYS
 Production:    serve the static files from your web server, run this app behind HTTPS (e.g. gunicorn, several workers is fine:
                the rate limit lives in SQLite), and set NEXACARE_TRUSTED_PROXIES to the number of reverse proxies in front of it.
 This is an enquiry inbox only. It is NOT a patient-records system and must not be used to store clinical information."""
@@ -11,6 +11,10 @@ from pathlib import Path
 from flask import Flask, jsonify, request, send_from_directory
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))      # so branches.py and enquiry_store.py import however the app is started
+import branches as BM
+import enquiry_store
+
 ROOT = Path(__file__).resolve().parent.parent
 DB = Path(os.environ.get("NEXACARE_DB", Path(__file__).parent / "instance" / "enquiries.db"))
 ALLOWED_ORIGINS = {o.strip() for o in os.environ.get("NEXACARE_ALLOWED_ORIGINS", "").split(",") if o.strip()}  # e.g. https://www.example.co.ke
@@ -19,7 +23,15 @@ SALT = os.environ.get("NEXACARE_HASH_SALT", "change-me-in-production")      # us
 KINDS = {"appointment", "homecare", "contact", "quick"}
 # Only these fields are ever stored (name -> max length). Anything else is ignored.
 FIELDS = {"name": 120, "requester_name": 120, "relationship": 120, "phone": 20, "email": 120, "service": 60, "care_type": 120, "age_group": 40, "area": 120,
-          "date": 10, "time": 20, "contact_time": 20, "contact_method": 20, "message": 600}
+          "date": 10, "time": 20, "contact_time": 20, "contact_method": 20, "message": 600,
+          "branch": 40}            # branch = a slug from data/branches.json, or "no-preference" (validated in enquiry())
+_BR = {"mtime": None, "slugs": set()}
+def allowed_branches():
+    """Branch slugs accepted from forms, read from data/branches.json (reloaded when the file changes, so no restart is needed)."""
+    try: m = BM.FILE.stat().st_mtime
+    except OSError: return {BM.NO_PREFERENCE}
+    if m != _BR["mtime"]: _BR.update(mtime=m, slugs=set(BM.slugs(BM.load())))
+    return _BR["slugs"]
 PHONE_RE, EMAIL_RE, DATE_RE = re.compile(r"^[0-9+()\s\-]{7,20}$"), re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$"), re.compile(r"^\d{4}-\d{2}-\d{2}$")
 RATE_MAX, RATE_WINDOW = 5, 600     # submissions per client per 10 minutes
 JS_SNIPPET = 'document.documentElement.classList.add("js")'   # inline script in every page; allowed in the CSP by hash
@@ -39,8 +51,7 @@ def db():
     new = not DB.exists()
     c = sqlite3.connect(DB, timeout=10)
     c.execute("PRAGMA journal_mode=WAL")
-    c.execute("""CREATE TABLE IF NOT EXISTS enquiries(id INTEGER PRIMARY KEY, reference TEXT UNIQUE NOT NULL, created_at TEXT NOT NULL, kind TEXT NOT NULL,
-                 name TEXT, phone TEXT, email TEXT, payload TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'new')""")
+    enquiry_store.ensure_schema(c)              # creates the table, or adds the branch column to an older database
     c.execute("CREATE TABLE IF NOT EXISTS hits(client TEXT NOT NULL, ts REAL NOT NULL)")
     c.execute("CREATE INDEX IF NOT EXISTS hits_client ON hits(client, ts)")
     if new:
@@ -73,18 +84,19 @@ def enquiry():
     if clean.get("phone") and not PHONE_RE.match(clean["phone"]): return err("Please enter a valid telephone number.", 400)
     if clean.get("email") and not EMAIL_RE.match(clean["email"]): return err("Please enter a valid email address.", 400)
     if clean.get("date") and not DATE_RE.match(clean["date"]): return err("Please enter a valid date.", 400)
+    if clean.get("branch") and clean["branch"] not in allowed_branches(): return err("Please choose a branch from the list.", 400)
     ref, now, cid = "NC-" + secrets.token_hex(4).upper(), time.time(), client_id()
     with db() as c:
         c.execute("DELETE FROM hits WHERE ts < ?", (now - RATE_WINDOW,))
         if c.execute("SELECT COUNT(*) FROM hits WHERE client=?", (cid,)).fetchone()[0] >= RATE_MAX:
             log.warning("blocked: rate limit"); return err("Too many requests. Please try again later or call us.", 429)
         c.execute("INSERT INTO hits(client, ts) VALUES(?,?)", (cid, now))
-        c.execute("INSERT INTO enquiries(reference,created_at,kind,name,phone,email,payload) VALUES(?,?,?,?,?,?,?)",
-                  (ref, datetime.now(timezone.utc).isoformat(timespec="seconds"), kind, name, clean.get("phone"), clean.get("email"), json.dumps(clean)))
+        c.execute("INSERT INTO enquiries(reference,created_at,kind,name,phone,email,payload,branch) VALUES(?,?,?,?,?,?,?,?)",
+                  (ref, datetime.now(timezone.utc).isoformat(timespec="seconds"), kind, name, clean.get("phone"), clean.get("email"), json.dumps(clean), clean.get("branch")))
     log.info("stored enquiry %s (%s)", ref, kind)   # never log names, phone numbers or message text
     return jsonify(ok=True, reference=ref), 201
 
-PRIVATE = {"python", "data", "README.md", ".gitignore", ".git"}
+PRIVATE = {"python", "data", "docs", "README.md", ".gitignore", ".git"}
 @app.get("/", defaults={"p": "index.html"})
 @app.get("/<path:p>")
 def static_site(p):
@@ -101,14 +113,20 @@ def server_error(e): log.exception("server error"); return err("Something went w
 
 @app.after_request
 def headers(r):
-    r.headers.update({"X-Content-Type-Options": "nosniff", "Referrer-Policy": "strict-origin-when-cross-origin", "X-Frame-Options": "SAMEORIGIN", "Content-Security-Policy": CSP})
+    for k, v in {"X-Content-Type-Options": "nosniff", "Referrer-Policy": "strict-origin-when-cross-origin", "X-Frame-Options": "SAMEORIGIN", "Content-Security-Policy": CSP}.items():
+        r.headers.setdefault(k, v)      # private pages (/staff, /portal) set stricter values first
     return r
+
+if os.environ.get("PORTAL_ENABLED") == "1":
+    from portal import create_portal
+    create_portal(app, enquiry_db=DB)     # staff dashboard, patient portal, homecare, clinical records, billing (see README)
 
 def cli(args):
     if args[0] == "list":
         n = int(args[1]) if len(args) > 1 else 20
         with db() as c:
-            for r in c.execute("SELECT reference, created_at, kind, name, phone, email, status FROM enquiries ORDER BY id DESC LIMIT ?", (n,)): print(" | ".join(str(x) for x in r))
+            branch = args[2] if len(args) > 2 else None        # optional: python app.py list 20 eldoret   (or "unspecified")
+            for r in enquiry_store.rows(c, n, branch): print(" | ".join(str(r[k] or "") for k in ("reference", "created_at", "kind", "branch_name", "name", "phone", "email", "status")))
     elif args[0] == "purge" and len(args) == 2:
         cutoff = (datetime.now(timezone.utc) - timedelta(days=int(args[1]))).isoformat(timespec="seconds")
         with db() as c: print("Deleted", c.execute("DELETE FROM enquiries WHERE created_at < ?", (cutoff,)).rowcount, "enquiries older than", args[1], "days")

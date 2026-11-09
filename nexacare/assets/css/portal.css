@@ -1,0 +1,28 @@
+/* Staff dashboard and patient portal. System fonts only: no third-party requests from logged-in pages. */
+body.app{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.app-wrap{width:min(100% - 2rem,1180px);margin-inline:auto}
+.app-head{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
+.app-head .app-wrap{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.5rem;padding-block:.6rem}
+.app-brand{display:flex;gap:.6rem;align-items:center;font-weight:700;color:var(--navy);text-decoration:none}
+.app-head nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.25rem 1rem;padding:0;margin:0}
+.app-head nav a{color:var(--heading);text-decoration:none;font-weight:600;font-size:.92rem;padding:.35rem .1rem}
+.app-head nav a:hover{color:var(--blue-btn)}
+.app-head form{margin-left:auto;display:flex;gap:.75rem;align-items:center;font-size:.9rem}
+.who{color:var(--muted)}
+main.app-wrap{padding-block:2rem 3rem;min-height:60vh}
+main h1{font-size:1.7rem;font-weight:600}main h1 small{font-size:.9rem;color:var(--muted);font-weight:400}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);margin:1rem 0;font-size:.93rem}
+th,td{text-align:left;padding:.6rem .75rem;border-bottom:1px solid var(--border);vertical-align:top}th{background:#F1F5F8;font-weight:600}
+form.inline{display:inline-flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin:.2rem 0}
+form.inline input,form.inline select,.card-form input,.card-form select,.card-form textarea{padding:.45rem .6rem;border:1px solid #CBD3DC;border-radius:4px;font:inherit}
+.card-form{background:#fff;border:1px solid var(--border);padding:1.25rem;max-width:34rem;margin:1.25rem 0;display:grid;gap:.9rem}
+.card-form .field input,.card-form .field select,.card-form .field textarea{width:100%}
+.card-form textarea{min-height:110px}
+.flash{padding:.75rem 1rem;border-left:4px solid var(--blue);background:var(--blue-tint)}
+.flash--error{border-color:var(--alert);background:var(--alert-tint);color:#7A271A}.flash--ok{border-color:var(--green);background:var(--green-tint);color:#0B4F2B}
+.tiles{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin:1rem 0 2rem}
+.tile-link{background:#fff;border:1px solid var(--border);padding:1.25rem;text-decoration:none;color:var(--heading)}.tile-link b{display:block;font-size:2rem;color:var(--blue-btn)}
+.note{background:#fff;border:1px solid var(--border);padding:1rem;margin:.75rem 0}
+.secret code{font-size:1.4rem;background:#fff;padding:.5rem 1rem;border:1px dashed var(--navy);user-select:all}
+.app-foot{color:var(--muted);font-size:.85rem;padding-bottom:2rem}
+@media(max-width:700px){table{display:block;overflow-x:auto}.app-head form{margin-left:0}}
